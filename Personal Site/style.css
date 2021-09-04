@@ -1,13 +1,19 @@
 
-
 body {
   background-color: rgb(254,252,250);
   font-family: Poppins, Helvetica, sans-serif;
-  /*box-sizing: border-box;*/
+  box-sizing: initial;
 }
+
+@font-face { font-family: Mogena; src: url('assets/Mogena.ttf'); } 
+@font-face { font-family: Mogena; font-weight: bold; src: url('assets/Mogena.ttf');}
 
 h1 {
   color: black;
+  font-size: 3rem;
+  line-height: 3.5rem;
+  margin-top: 0rem;
+  margin-bottom: 0rem;
 }
 
 h2 {
@@ -15,34 +21,89 @@ h2 {
   margin: 0rem;
 }
 
+header {
+  position: fixed;
+  left: 0;
+  right: 0;
+  padding: 0.6rem  2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /*align-items: sp;*/
+}
+
+footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  padding: 0.6rem  2rem;
+  display: flex;
+  justify-content: left;
+}
+
 h3 {
   margin-top: 0rem;
   margin-bottom: 0rem;
 }
 
-p {
-  color: slategray;
+p, table, thead, tbody, tr, th, td, li, label {
+  color: rgb(64, 64, 64);
+  font-weight: normal;
   margin: 0px;
 }
 
+table {
+  text-align: left;
+  border-spacing: 4px;
+}
 
-.grid-2cols {
-  height: 100vh;
-  width: 100vw;
+th {
+  font-weight: bold;
+}
+
+td {
+  line-height: 1rem;
+  padding: 0.3rem;
+}
+
+ul {
+  margin: 0px;
+  padding-left: 1rem;
+}
+
+article {
+  margin: 0.5rem 0rem;
+}
+
+#logo {
+  font-size: 2rem;
+  font-family: Mogena, sans-serif;
+}
+
+#submit-button {
+  grid-column: 1 / 3;
+  padding: 0.6rem;
+  margin-top: 0.3rem;
+}
+
+.column-parent {
   max-width: 1200px;
   position: relative;
   display: flex;
   flex-direction: row;
   justify-content: left;
-  align-items: center;
+  align-items: top;
   margin: 0px auto;
   /*border: 1px solid red;*/
 }
 
 .column-left {
-  position: static;
-  width: 30%;
+  position: sticky;
+  /*width: 30%;*/
   max-width: 400px;
+  top: 5rem;
   height: 100%;
   left: 0px;
   /*border: 1px solid black;*/
@@ -53,8 +114,9 @@ p {
 }
 
 .column-right {
-  width: 45%;
+  /*width: 45%;*/
   /*border: 1px solid red;*/
+  position: static;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -65,57 +127,75 @@ p {
   padding: 4rem;
 }
 
+.content-card {
+  margin-bottom: 2rem;
+  border-radius: 10px;
+  padding: 2rem;
+  background-color: white;
+
+  border: 0.2px solid rgba(0, 0, 0, 0.1);
+
+  transition-property: box-shadow;
+  transition-duration: 0.5s;
+
+}
+
+.content-card:hover {
+  
+  box-shadow: 0px 6px 30px rgba(0, 0, 0, 0.1);
+}
+
 .prof-pic {
   width: 20rem;
-  height: 20rem;
+  height: 26rem;
+  margin-bottom: 1rem;
   object-fit: cover;
-  border-radius: 50%;
+  border-radius: 10px;
   display: block;
 }
 
-.list-card {
-  padding: 0.75rem 1rem;
-  margin-bottom: 0.25rem;
-  border-radius: 8px;
-  box-shadow: none;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  border: 0.3px solid rgba(0,0,0,0.05);
-  transition-property: box-shadow, background-color;
-  transition-duration: 1s;
-}
-
-.list-card:hover {
-  background-color: white;
-  box-shadow: 6px 6px 30px 12px rgba(0, 0, 0, 0.1);
-  transition-property: box-shadow, background-color;
-  transition-duration: 0.4s;
-}
-
-.list-card-content {
-  
-}
-
-.list-card-image {
-  transition-property: transform;
-  transition-duration: 0.2s;
-  display: none;
-}
-
-.list-card-image:hover {
-  transform: rotate(-40deg);
-  transition-property: transform;
-  transition-duration: 0.3s;
-}
-
 .list-section-title {
-  margin-top: 3rem;
+  margin-top: 1rem;
   margin-bottom: 1rem;
   font-size: 1rem;
   font-weight: normal;
   color: rgba(0, 0, 0, 0.3);
   text-transform: uppercase;
   letter-spacing: 0.15rem;
+}
+
+.form-grid {
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: 1fr 2fr;
+  columns: 2;
+}
+
+input[type="text"], textarea {
+  background-color: white;
+  border: 0.2px solid rgba(0, 0, 0, 0.2);
+
+  font-family: Poppins, Helvetica, sans-serif;
+  padding: 0px 6px;
+}
+
+@media only screen and (max-width: 600px) {
+
+  header {
+    position: static;
+  }
+
+  .column-parent {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: top;
+    margin: 0px auto;
+  }
+
+  .column-left {
+    position: static;
+  }
+
 }
