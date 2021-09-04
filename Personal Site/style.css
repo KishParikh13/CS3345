@@ -17,7 +17,7 @@ h2 {
 
 h3 {
   margin-top: 0rem;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0rem;
 }
 
 p {
@@ -101,6 +101,7 @@ p {
 .list-card-image {
   transition-property: transform;
   transition-duration: 0.2s;
+  display: none;
 }
 
 .list-card-image:hover {
