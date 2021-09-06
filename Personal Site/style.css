@@ -1,8 +1,11 @@
 
+* {
+  box-sizing: initial;
+}
+
 body {
   background-color: rgb(254,252,250);
   font-family: Poppins, Helvetica, sans-serif;
-  box-sizing: initial;
 }
 
 @font-face { font-family: Mogena; src: url('assets/Mogena.ttf'); } 
@@ -82,10 +85,26 @@ article {
   font-family: Mogena, sans-serif;
 }
 
+#signature {
+  display: none;
+}
+
 #submit-button {
   grid-column: 1 / 3;
+  background-color: rgb(195, 227, 177);
+  color: black;
   padding: 0.6rem;
-  margin-top: 0.3rem;
+  margin-top: 0.5rem;
+  border: none;
+  border-radius: 4px;
+  font-family: Poppins, Helvetica, sans-serif;
+
+  transition-property: background-color;
+  transition-duration: 0.2s;
+}
+
+#submit-button:hover {
+  background-color: rgb(178, 212, 159);
 }
 
 .column-parent {
@@ -145,6 +164,40 @@ article {
   box-shadow: 0px 6px 30px rgba(0, 0, 0, 0.1);
 }
 
+.occupation {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.occupation > a {
+  text-decoration: none;
+}
+
+.occupation > * > article {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  /*height: 100%;*/
+  padding: 1rem;
+  border-radius: 10px;
+  border: 0.2px solid rgba(0, 0, 0, 0.1);
+
+  transition-property: background-color;
+  transition-duration: 0.1s;
+}
+
+.occupation > * > article:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.occupation > * > article > img {
+  margin-bottom: 0.5rem;
+}
+
 .prof-pic {
   width: 20rem;
   height: 26rem;
@@ -152,6 +205,7 @@ article {
   object-fit: cover;
   border-radius: 10px;
   display: block;
+  float: left;
 }
 
 .list-section-title {
@@ -167,16 +221,23 @@ article {
 .form-grid {
   display: grid;
   gap: 0.5rem;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr 3fr;
   columns: 2;
 }
 
 input[type="text"], textarea {
   background-color: white;
-  border: 0.2px solid rgba(0, 0, 0, 0.2);
-
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
   font-family: Poppins, Helvetica, sans-serif;
+  font-size: 1rem;
   padding: 0px 6px;
+}
+
+input[type="text"]:hover, input[type="text"]:focus, textarea:hover, textarea:focus {
+
+  outline: none !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 1);
 }
 
 @media only screen and (max-width: 600px) {
