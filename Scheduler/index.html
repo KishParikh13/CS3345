@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Recommended order for implementation: -->
+<!-- add rules to styles.css that hide all section tags under main not having a class of 'active' -->
+<!-- scheduler (js file) -->
+<!-- homeView (js file, html below & css) -->
+<!-- calendartView (js file, html below & css) -->
+<!-- appointmentView (js file, html below & css) -->
+
+<head>
+
+  <!-- Go out to https://fonts.google.com/ and follow instructions to use font 'Source Sans Pro'-->
+  <!-- You will need to add your reference to google's font api before your local stylesheet. -->
+  
+  <link rel="stylesheet" href="style.css" />
+
+  <script>
+    var app;
+  </script>
+
+  <script src="scripts/viewer.js"></script>
+  <script src="scripts/scheduler.js"></script>
+  <script src="scripts/views/calendar.js"></script>
+  <script src="scripts/views/home.js"></script>
+  <script src="scripts/views/appointment.js"></script>
+</head>
+
+<body onload="app.homeView.load()">
+  <header>
+    <h1>Tutoring Center</h1>
+
+    <div class="is-hidden">
+      <button onclick="app._changeView('homeView')">
+        Home
+      </button>
+      <button onclick="app._changeView('calendarView')">
+        Calendar
+      </button>
+      <button onclick="app._changeView('appointmentView')">
+        Appointment
+      </button>
+    </div>
+  </header>
+  <main>
+
+    <!-- Add css that sets main > section to display none, but main > section.active to display block -->
+    <section id="homeView" class="active">
+      <h2 class="section-title">Home</h2>
+      <!-- Add container for list of profile cards (to be bound from code) -->
+      <!-- and a template of a profile card (wrapped by a selectable template tag) inside container -->
+      <div class="tutors-grid" id="tutors-grid">
+        <template id="tutor-card-template">
+          <div class="tutor-card">
+            <img src="https://media.istockphoto.com/vectors/thumbnail-image-vector-graphic-vector-id1147544807?k=20&m=1147544807&s=612x612&w=0&h=pBhz1dkwsCMq37Udtp9sfxbjaMl27JUapoyYpQm0anc=" class="tutor_img" width="150" height="150">
+            <div class="tutor-info">
+              <h3 class="tutor-name">Name</h3>
+              <div class="tutor-skills">
+                <div class="tutor-skill">Skill</div>
+              </div>
+            </div>
+            <button class="button" id="scheduleButton">
+              View Schedule
+            </button>
+          </div>
+        </template>
+      </div>
+    </section>
+
+
+
+    <section id="calendarView">
+
+      <!-- h2 to be bound from code -->
+      <!-- Table for displaying a tutur's schedule goes here -->
+      <!-- with a row in the tbody for each day (Monday-Thursday). -->
+      <!-- Make id of second column in each row the day name ("Monday", etc.).  -->
+      <!-- Button to return to list should call app.homeView.load() -->
+
+      <h2 class="section-title" id="calendar-heading">Calendar</h2>
+      <p class="text-color-muted">Tutoring hours are Monday-Thursday from 5pm to 7pm</p>
+      <table class="calendar">
+        <thead>
+          <tr>
+            <th>Day</th>
+            <th>Availability</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Monday</td>
+            <td id="Monday">
+              <button class="button">Book Appointment</button>
+              <div class="booked-person-info">
+                <p class="person-name">Name</p>
+                <p class="text-color-muted person-notes">Notes</p>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Tuesday</td>
+            <td id="Tuesday">
+              <button class="button">Book Appointment</button>
+              <div class="booked-person-info">
+                <p class="person-name">Name</p>
+                <p class="text-color-muted person-notes">Notes</p>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Wednesday</td>
+            <td id="Wednesday">
+              <button class="button">Book Appointment</button>
+              <div class="booked-person-info">
+                <p class="person-name">Name</p>
+                <p class="text-color-muted person-notes">Notes</p>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Thursday</td>
+            <td id="Thursday">
+              <button class="button">Book Appointment</button>
+              <div class="booked-person-info">
+                <p class="person-name">Name</p>
+                <p class="text-color-muted person-notes">Notes</p>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <button class="button button-secondary" onclick="app._changeView('homeView')">Return to list</button>
+    </section>
+
+
+
+    <section id="appointmentView">
+      <h2>Appointments</h2>
+
+      <!-- Form to collect name (input) and notes (textarea) goes here -->
+      <!-- Cancel button calls app.homeView.load() -->
+      <!-- Book button calls app.appointmentView.save() -->
+
+      <form name="book-appointment-form" id="book-appointment-form" class="book-appointment-form">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name">
+        <label for="notes">Notes</label>
+        <textarea  name="notes" id="notes"></textarea>
+        <div class="book-appointment-form-btns">
+          <div class="button button-secondary" onclick="app._changeView('homeView')">Cancel</div>
+          <div class="button" onclick="app.appointmentView.save()">Book</div>
+        </div>
+      </form>
+
+    </section>
+
+
+  </main>
+</body>
+</html>
